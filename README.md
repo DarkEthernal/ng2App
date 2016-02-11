@@ -7,4 +7,4 @@
 5. When the install process finishes type 'npm start'
 6. Your default browser (*Chrome) should open and display the index.html
 
-\* Due the lack of time the app is optimized only for chrome, other browsers may work or may not. 
+\* Due to the lack of time the app is optimized only for chrome, other browsers may work or may not. 
