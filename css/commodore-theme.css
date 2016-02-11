@@ -1,0 +1,170 @@
+body {
+    padding-top: 50px;
+    background-color: #2F6FAD;
+}
+
+div.sportEvent {
+    margin: 10px;
+    font-size: 10pt;
+}
+
+div.sportEventInfo {
+    padding: 0px 5px;
+    margin: 5px 0;
+    color: white;
+    height: 40px;
+}
+
+div.sportEventInfoLarge {
+    padding: 0px 5px;
+    margin: 5px 0;
+    color: white;
+    height: 80px;
+}
+
+div.sportEvent-fb {
+    background-color: #3c763d;
+}
+
+div.sportEvent-te {
+    background-color: #985f0d;
+}
+
+div.sportEvent-hc {
+    background-color: #2F6FAD;
+}
+
+div.eventName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+div.odd {
+    border-color: #080808;
+    background-color: #222222;
+    color: white;
+    height: 40px;
+    margin: 5px 0px;
+    overflow: hidden;
+}
+
+div.oddsCollectionName {
+    padding-left: 30px;
+}
+
+div.oddInnerDiv {
+    background-color: inherit;
+}
+
+div.oddName {
+    line-height: 40px;
+    padding-left: 5px;
+    width: 68%;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div.oddValue {
+    text-align: right;
+    padding-right: 3px;
+    line-height: 40px;
+    float: none;
+}
+
+div.oddContainer :hover
+{
+    background-color: #5e5e5e;
+}
+
+div.oddInnerDiv {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+div.moreOdds {
+    color: white;
+    line-height: 40px;
+    padding-left: 10px;
+    margin-top: 5px;
+    height: 40px;
+    border-color: #080808;
+    background-color: #222222;
+}
+
+div.moreOdds:hover {
+    background-color: #5e5e5e;
+}
+
+div.routerOutlet {
+    padding: 40px 15px;
+}
+
+div.selected {
+    border-color: #080808;
+    background-color: #ffcc00;
+}
+
+div.selected:hover {
+    border-color: #080808;
+    background-color: #5e5e5e;
+}
+
+div.betsliSportEvent {
+    margin: 10px;
+}
+
+div.betsliSportEventInfo {
+    background-color: #ffcc00;
+}
+
+div.submitBet {
+    height: 30px;
+    padding-top: 5px;
+    padding-left: 40%;
+    cursor: hand;
+    color: white;
+    border-color: #080808;
+    background-color: #222222;
+}
+
+div.submitBet:hover {
+    border-color: #080808;
+    background-color: #ffcc00;
+}
+
+div.betslipInfo {
+    margin: 5px 0;
+}
+
+button.submitButton {
+    color: white;
+    background-color: #080808;
+    border: none;
+}
+
+button.submitButton:hover {
+    background-color: #ffcc00;
+}
+
+div.removeOdd
+{
+    height: 40px;
+    color: white;
+    background-color: #080808;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+div.removeOdd:hover
+{
+    background-color: #ffcc00;
+}
+
+div.contentRow
+{
+    margin: 10px;
+}
