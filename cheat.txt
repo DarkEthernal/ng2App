@@ -1,0 +1,117 @@
+Cheat 1:
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" [routerLink]="['SportEventsList']">Commodore Betting</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li> <a [routerLink]="['SportEventsList']">Home</a></li>
+                <li> <a [routerLink]="['Betslip']">Betslip<span *ngIf="selectedEvents.length > 0">({{selectedEvents.length}})</span></a></li>
+                <li> <a [routerLink]="['User']">{{user.userName}} ({{user.name}} {{user.surname}}) {{user.balance}}€ </a></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+Cheat 2: Betslip service
+
+ private processOddClicked(data) {
+        /*
+        console.log(`BetslipService > processOddClicked > ${JSON.stringify(data)}`);
+        */
+
+        let indexOfEvent = this.findEvent(data);
+
+        if (indexOfEvent > -1)
+        {
+            let isSameOdd = this.selectedEvents[indexOfEvent].oddId == data.oddId;
+
+            this.selectedEvents.splice(indexOfEvent, 1);
+
+            if (!isSameOdd)
+            {
+                this.selectedEvents.push({'eventId': data.eventId, 'oddsCollectionIndex' : data.oddsCollectionIndex, 'oddId': data.oddId });
+            }
+        }
+        else
+        {
+            this.selectedEvents.push({'eventId': data.eventId, 'oddsCollectionIndex' : data.oddsCollectionIndex, 'oddId': data.oddId });
+        }
+
+        this.publishSelectedEvents();
+    }
+
+    private findEvent(obj: SelectedEvent) : number {
+        for (var i = 0, j = this.selectedEvents.length; i < j; i++) {
+            if (this.selectedEvents[i].eventId === obj.eventId &&
+                this.selectedEvents[i].oddsCollectionIndex === obj.oddsCollectionIndex)
+                return i;
+        }
+        return -1;
+    }
+
+Cheat 3: sportEventList component
+
+ private processSelectedEvents(selectedEvents: SelectedEvent[])
+    {
+        console.log(`BetList > processOddClicked > ${JSON.stringify(selectedEvents)}`);
+
+        this.data.forEach(
+            event => event.odds.forEach(
+                oddCollection => oddCollection.odds.forEach(odd => odd.isSelected = false)));
+
+        selectedEvents.forEach(selectedEvent => {
+            var event = this.data.find(event => event.id == selectedEvent.eventId);
+            if (event)
+            {
+                let oddsCollection = event.odds[selectedEvent.oddsCollectionIndex];
+                let selectedOdd = oddsCollection.odds.find(odd => odd.isSelected);
+                let odd = oddsCollection.odds.find(odd => odd.id == selectedEvent.oddId);
+
+                if (selectedOdd && selectedOdd.id != odd.id)
+                {
+                    selectedOdd.isSelected = false;
+                }
+
+                if (odd)
+                {
+                    odd.isSelected = true;
+                }
+            }
+        });
+    }
+    
+    private processSelectedEvents(selectedEvents: SelectedEvent[])
+    {
+        console.log(`BetList > processOddClicked > ${JSON.stringify(selectedEvents)}`);
+
+        this.sportEvent.odds.forEach(
+                oddCollection => oddCollection.odds.forEach(odd => odd.isSelected = false));
+
+        var filteredSelectedEvents = selectedEvents.filter(event => event.eventId == this.sportEvent.id);
+
+        filteredSelectedEvents.forEach(selectedEvent => {
+                let oddsCollection = this.sportEvent.odds[selectedEvent.oddsCollectionIndex];
+                var selectedOdd = oddsCollection.odds.find(odd => odd.isSelected);
+                var odd = oddsCollection.odds.find(odd => odd.id == selectedEvent.oddId);
+
+                if (selectedOdd && selectedOdd.id != odd.id)
+                {
+                    selectedOdd.isSelected = false;
+                }
+
+                if (odd)
+                {
+                    odd.isSelected = true;
+                }
+            });
+    }
