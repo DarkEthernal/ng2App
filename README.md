@@ -1,4 +1,4 @@
-# Angular Workshop starter kit 
+# Angular 2 Workshop starter kit 
 
 1. Install Webstorm (free 30-day trial)
 2. Download Zip file of this project and unzip it (or pull repo as an advanced user)
